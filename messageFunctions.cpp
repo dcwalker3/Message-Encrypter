@@ -3,7 +3,9 @@
 
 using namespace std;
 
-
+// Function to shift character location (ASCII code) over a x amount.
+// Paramaters: int key to be used in mathematical formula
+// Returns: int amount characters to be moved over.
 int shiftEncryptCharacter( int key){
     // Amount of characters to shift over.
     double shiftAmount = 0.0;
