@@ -1,14 +1,30 @@
 #include <iostream>
+#include <math.h>
 
 using namespace std;
+
+
+int shiftEncryptCharacter( int key){
+    // Amount of characters to shift over.
+    double shiftAmount = 0.0;
+    
+    // Forumla to encrypt or decrypt a message.
+    double sqrtAmount = sqrt(key);
+    shiftAmount = log(sqrtAmount/double(key^2));
+    shiftAmount *= 10;
+    shiftAmount = round(shiftAmount);
+
+    // Return shiftAmount over.
+    return shiftAmount;
+}
 
 // Function to move all letters over by 2.
 // Parameters: a string message from user.
 // Returns: string encrypted message
-string encryptMessage(string message){
+string encryptMessage(string message, int key){
     // Move all letters in string over 2 letters
-    for(int i = 0; i < message.length(); i++){
-        message[i] = message[i] + 2;
+    for(int i = 0; i < message.length(); i++){        
+        message[i] = message[i] + shiftEncryptCharacter(key);
     }
 
     return message;
@@ -17,10 +33,10 @@ string encryptMessage(string message){
 // Function to move all letters backwards over by 2.
 // Parameters: a string message from user.
 // Returns: string decrypted message
-string decryptMessage(string message){
+string decryptMessage(string message, int key){
     // Move all letters in string back 2 letters
     for(int i = 0; i < message.length(); i++){
-        message[i] = message[i] - 2;
+        message[i] = message[i] - shiftEncryptCharacter(key);
     }
 
     return message;

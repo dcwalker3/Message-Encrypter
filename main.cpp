@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+
 int main(){
     // Print Options
     cout << "Enter a Option" << endl;
@@ -16,6 +18,13 @@ int main(){
     cin >> option;
     
     string message;
+    int key = 0;
+
+    if(option == 1 || option == 2){
+        cout << "Please Enter a integer key for encryption/decryption: ";
+        cin >> key;
+    }
+
 
     // Go through options available to user.
     if(option == 1){
@@ -27,7 +36,7 @@ int main(){
         cin.get();
         getline (cin, message);
 
-        cout << "Encrypted Message: " << encryptMessage(message) << endl;
+        cout << "Encrypted Message: " << encryptMessage(message, key) << endl;
     }
     else if(option == 2){
         cout << "Enter a message to decrypt: ";
@@ -36,7 +45,7 @@ int main(){
         cin.get();
         getline (cin, message);
 
-        cout << "Decrypted Message: " << decryptMessage(message) << endl;
+        cout << "Decrypted Message: " << decryptMessage(message, key) << endl;
     }
     else if(option == 3){
         cout << "Enter a message to reverse: ";
